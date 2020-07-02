@@ -3,6 +3,7 @@
 .aws
 .bash_sessions
 .cache
+.CFUserTextEncoding
 .config
 .cups
 .docker
@@ -10,6 +11,7 @@
 .env
 .iterm2
 .local
+.profile
 .r
 .rstudio-desktop
 .ssh

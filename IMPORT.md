@@ -18,6 +18,7 @@ VSCode-darwin-stable.zip # https://code.visualstudio.com/download
 ## brew
 
 ```sh
+#chsh -s /bin/bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 brew install git bash-completion
 brew install tmux
