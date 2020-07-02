@@ -36,6 +36,8 @@ brew install telnet
 git clone https://github.com/bilardi/my-environment
 bash my-environment/bin/env-compare
 bash my-environment/bin/env-update 
+ln -s ../.tmux/plugins/tmux-resurrect tmux-resurrect
+git submodule update --recursive
 # Finder > ctrl + K
 # MySQL WorkBench > Tools > Configuration > Restore connections
 # iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark

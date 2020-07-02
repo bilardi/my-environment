@@ -22,6 +22,7 @@ Applications
 Desktop
 Documents
 Downloads
+bin/tmux-resurrect
 github
 issues
 Library

@@ -40,10 +40,10 @@ mkdir -p smb/${smbpath}.aws && cp -v .aws/c* smb/${smbpath}.aws/
 cp -vrf bin .emacs* .tmux* .ssh smb/$smbpath
 echo Copy additional software configuration to smb
 for filename in authenticator.chrome.txt authenticator.chromium.txt bookmarks.chrome.html bookmarks.chromium.html tool.configuration.backup.connections.zip; do
-    if [ -e ~/Download/$filename ]; then
-        cp -v ~/Download/$filename smb/$smbpath
+    if [ -e ~/Downloads/$filename ]; then
+        cp -v ~/Downloads/$filename smb/$smbpath
     else
-        echo ~/Download/$filename not found
+        echo ~/Downloads/$filename not found
     fi
 done
 

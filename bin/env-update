@@ -38,10 +38,10 @@ echo Copy main configuration to ~/
 cp -v .bash* .git* ~/
 cp -v .aws/c* ~/.aws/
 cp -vrf bin .emacs* .tmux* .ssh ~/
-echo Copy additional software configuration to ~/Download/
+echo Copy additional software configuration to ~/Downloads/
 for filename in authenticator.chrome.txt authenticator.chromium.txt bookmarks.chrome.html bookmarks.chromium.html tool.configuration.backup.connections.zip; do
-    if [ -e ~/Download/$filename ]; then
-        cp $filename ~/Download/
+    if [ -e ~/Downloads/$filename ]; then
+        cp $filename ~/Downloads/
     else
         echo $smbpath$filename not found
     fi
