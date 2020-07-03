@@ -34,10 +34,13 @@ brew install telnet
 ## configurations
 
 ```sh
-git clone https://github.com/bilardi/my-environment
-bash my-environment/bin/env-compare
-bash my-environment/bin/env-update 
+cd ~/
+git clone https://github.com/bilardi/my-environment .
+bash bin/env-update
+cd bin
 ln -s ../.tmux/plugins/tmux-resurrect tmux-resurrect
+cd -
+git submodule init
 git submodule update --recursive
 # Finder > ctrl + K
 # MySQL WorkBench > Tools > Configuration > Restore connections

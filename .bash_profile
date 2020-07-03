@@ -1,4 +1,4 @@
-if [ -f /usr/local/etc/bash_completion.d ]; then
+if [ -d /usr/local/etc/bash_completion.d ]; then
     [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 fi
 
