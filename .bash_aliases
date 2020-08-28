@@ -47,8 +47,8 @@ alias emacs='emacs -nw'
 # MacBook
 
 alias pmm='ssh -i ~/.ssh/pmm-key.pem admin@172.31.6.217'
-alias t4='ssh -i ~/.ssh/pmm-key.pem centos@172.31.2.194'
-alias rdstoqda-1a='ssh -i ~/.ssh/accesso-sistemi.pem centos@172.31.2.95'
+alias dumper='ssh -i ~/.ssh/alessandrabilardi.pem ec2-user@172.31.2.92'
+alias rdstoqda-2a='ssh -i ~/.ssh/accesso-sistemi.pem centos@172.31.2.74'
 alias rdstoqda-1b='ssh -i ~/.ssh/accesso-sistemi.pem centos@172.31.5.224'
 
 #alias emacs='/usr/local/opt/emacs/Emacs.app/Contents/MacOS/Emacs -nw'
@@ -63,3 +63,4 @@ alias mysqldump='/Applications/MySQLWorkbench.app/Contents/MacOS/mysqldump'
 #alias sceptre142='docker run --rm -it -e AWS_PROFILE=$AWS_PROFILE -v $HOME/.aws:/root/.aws:ro -v $(pwd):/workdir:ro craighurley/docker-sceptre:1.4.2'
 #alias sceptre210='docker run --rm -it -e AWS_PROFILE=$AWS_PROFILE -v $HOME/.aws:/root/.aws:ro -v $(pwd):/workdir:ro craighurley/docker-sceptre:2.1.0'
 alias myenv='PREVIOUS_PATH=$PWD; cd ~/; python3 -m venv .env && source .env/bin/activate && pip3 install --user --upgrade -r requirements.txt; cd $PREVIOUS_PATH'
+

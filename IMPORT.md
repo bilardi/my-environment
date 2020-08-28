@@ -46,6 +46,9 @@ git submodule update --recursive
 # MySQL WorkBench > Tools > Configuration > Restore connections
 # iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
 # iTerm2 > Install Shell Integration
+# VScode
+brew install node
+npm install -g vscode
 ```
 
 ## extensions

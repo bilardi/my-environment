@@ -11,9 +11,14 @@
 .env
 .iterm2
 .local
+.mysql_history
+.npm
 .profile
+.pylint.d
+.python_history
 .r
 .rstudio-desktop
+.serverless*
 .ssh
 .tmux/resurrect
 .tmux_history
