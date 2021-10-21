@@ -29,6 +29,7 @@ brew install telnet
 #brew tap ringohub/redis-cli
 #brew update && brew doctor
 #brew install redis-cli
+brew install nodeenv
 ```
 
 ## configurations
@@ -47,7 +48,6 @@ git submodule update --recursive
 # iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
 # iTerm2 > Install Shell Integration
 # VScode
-brew install node
 npm install -g vscode
 ```
 
@@ -74,9 +74,10 @@ brew install eqnxio/cimpress-cloud-engineering/stskeygen
 #npm config set strict-ssl false # for serverless packages installation
 #brew install pyenv
 #pyenv install 3.6.6 # brew install python3 installs python3.7
+pip3 install virtualenv
 # Pip, setuptools, and wheel have been installed. To update them run
 # pip3 install --upgrade pip setuptools wheel
-sudo pip3 install awscli --upgrade
+pip3 install awscli --upgrade
 #npm install -g aws-cdk # now only in pyenv
 ```
 

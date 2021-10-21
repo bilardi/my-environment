@@ -46,7 +46,8 @@ alias emacs='emacs -nw'
 
 # MacBook
 
-alias pmm='ssh -i ~/.ssh/pmm-key.pem admin@172.31.6.217'
+alias pmm_stg='ssh -i ~/.ssh/pmm-key.pem ec2-user@172.31.6.43'
+alias pmm_prd='ssh -i ~/.ssh/pmm-key.pem ec2-user@172.31.6.102'
 alias dumper='ssh -i ~/.ssh/alessandrabilardi.pem ec2-user@172.31.2.92'
 alias rdstoqda-2a='ssh -i ~/.ssh/accesso-sistemi.pem centos@172.31.2.74'
 alias rdstoqda-1b='ssh -i ~/.ssh/accesso-sistemi.pem centos@172.31.5.224'
