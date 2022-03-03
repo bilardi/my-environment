@@ -1,12 +1,14 @@
 [user]
 	name = Alessandra Bilardi
-	email = alessandra.bilardi@pixartprinting.com
+	email = alessandra.bilardi@gmail.com
 [core]
 	editor = emacs -nw
-	excludesfile = /Users/alessandra.bilardi/.gitignore_global
+#	excludesfile = /Users/alessandra.bilardi/.gitignore_global #macos
+	excludesfile = ~/.gitignore_global
 [diff]
 #	tool = ediff
-	external = /Users/alessandra.bilardi/bin/git-meld
+#	external = /Users/alessandra.bilardi/bin/git-meld # macos
+	external = ~/bin/git-meld
 [color]
 	ui = true
 	status = auto
