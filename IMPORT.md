@@ -1,6 +1,8 @@
 # Import my environment
 
-## download softwares
+## mac
+
+### download softwares
 
 ```sh
 #Caffeine1.1.1.zip # Jolt of Caffeine by Apple Store!
@@ -12,10 +14,16 @@ mysql-workbench-community-8.0.20-macos-x86_64.dmg # https://dev.mysql.com/downlo
 RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
 Skype-8.61.0.77.dmg # https://www.skype.com/en/thank-you-skype/
 Spectacle+1.2.zip # https://www.spectacleapp.com/
-VSCode-darwin-stable.zip # https://code.visualstudio.com/download
+#VSCode-darwin-stable.zip # https://code.visualstudio.com/download
+# Finder > ctrl + K
+# MySQL WorkBench > Tools > Configuration > Restore connections
+# iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
+# iTerm2 > Install Shell Integration
+# VScode
+npm install -g vscode
 ```
 
-## brew
+### brew
 
 ```sh
 #chsh -s /bin/bash
@@ -32,37 +40,7 @@ brew install telnet
 brew install nodeenv
 ```
 
-## configurations
-
-```sh
-cd ~/
-git clone https://github.com/bilardi/my-environment .
-bash bin/env-update
-cd bin
-ln -s ../.tmux/plugins/tmux-resurrect tmux-resurrect
-cd -
-git submodule init
-git submodule update --recursive
-# Finder > ctrl + K
-# MySQL WorkBench > Tools > Configuration > Restore connections
-# iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
-# iTerm2 > Install Shell Integration
-# VScode
-npm install -g vscode
-```
-
-## extensions
-
-* https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai
-* https://chrome.google.com/webstore/detail/time-calculator/ehildbclipkplmjfidlkkplaieiglaml
-* https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd
-
-## import
-
-* authenticator.*.txt
-* bookmarks.*.html
-
-## env
+### env
 
 ```sh
 brew install eqnxio/cimpress-cloud-engineering/stskeygen
@@ -80,6 +58,42 @@ pip3 install virtualenv
 pip3 install awscli --upgrade
 #npm install -g aws-cdk # now only in pyenv
 ```
+
+## pi
+
+### download softwares
+
+```sh
+apt-get install emacs-nox code tmux awscli
+pip3 install virtualenv
+curl -fsSL https://get.docker.com | sh
+usermod -aG docker pi
+reboot
+```
+
+## configurations
+
+```sh
+cd ~/
+git clone https://github.com/bilardi/my-environment .
+bash bin/env-update
+cd bin
+ln -s ../.tmux/plugins/tmux-resurrect tmux-resurrect
+cd -
+git submodule init
+git submodule update --recursive
+```
+
+## extensions
+
+* https://chrome.google.com/webstore/detail/authenticator/bhghoamapcdpbohphigoooaddinpkbai
+* https://chrome.google.com/webstore/detail/time-calculator/ehildbclipkplmjfidlkkplaieiglaml
+* https://chrome.google.com/webstore/detail/lastpass-free-password-ma/hdokiejnpimakedhajhdlcegeplioahd
+
+## import
+
+* authenticator.*.txt
+* bookmarks.*.html
 
 ## git
 
