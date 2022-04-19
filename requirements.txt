@@ -1,1 +1,4 @@
-sceptre
+virtualenv
+#sceptre
+awscli
+aws-sam-cli

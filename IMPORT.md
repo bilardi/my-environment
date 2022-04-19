@@ -71,12 +71,24 @@ usermod -aG docker pi
 reboot
 ```
 
+## ubuntu
+
+### download softwares
+
+```sh
+apt-get install curl emacs-nox tmux python3-pip meld
+pip3 install -r requirements.txt
+curl -fsSL https://get.docker.com | sh
+usermod -aG docker pi
+reboot
+```
+
 ## configurations
 
 ```sh
 cd ~/
 git clone https://github.com/bilardi/my-environment .
-bash bin/env-update
+#bash bin/env-update
 cd bin
 ln -s ../.tmux/plugins/tmux-resurrect tmux-resurrect
 cd -

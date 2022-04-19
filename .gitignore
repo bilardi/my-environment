@@ -17,14 +17,18 @@ Pictures
 Public
 
 .gnome
+.mozilla
 .pki
 .pp_backup
+.sudo_as_admin_successful
 .xsession*
 .Xauthority
+snap
 Videos
 Templates
 
 .aws
+.aws-sam
 .bash_history
 .bash_sessions
 .cache

@@ -66,3 +66,5 @@ alias mysqlbinlog='docker run -it --rm -e MYSQL_ALLOW_EMPTY_PASSWORD=yes --net=t
 #alias sceptre210='docker run --rm -it -e AWS_PROFILE=$AWS_PROFILE -v $HOME/.aws:/root/.aws:ro -v $(pwd):/workdir:ro craighurley/docker-sceptre:2.1.0'
 alias myenv='PREVIOUS_PATH=$PWD; cd ~/; python3 -m venv .env && source .env/bin/activate && pip3 install --user --upgrade -r requirements.txt; cd $PREVIOUS_PATH'
 
+# new aliases
+alias tmuxa='tmux attach -t 0'
