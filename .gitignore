@@ -37,6 +37,7 @@ Templates
 .docker
 .env
 .emacs.d
+.git-credentials
 .less*
 .local
 .mysql_history

@@ -5,45 +5,51 @@
 ### download softwares
 
 ```sh
-#Caffeine1.1.1.zip # Jolt of Caffeine by Apple Store!
-chrome-mac.zip # https://chromium.woolyss.com/
-Docker.dmg # https://www.docker.com/products/docker-desktop
-iTerm2-3_2_3.zip # https://www.iterm2.com/downloads.html
+#softwareupdate --install-rosetta
 mysql-workbench-community-8.0.20-macos-x86_64.dmg # https://dev.mysql.com/downloads/workbench/
-RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
-Skype-8.61.0.77.dmg # https://www.skype.com/en/thank-you-skype/
-Spectacle+1.2.zip # https://www.spectacleapp.com/
-#VSCode-darwin-stable.zip # https://code.visualstudio.com/download
 # Finder > ctrl + K
 # MySQL WorkBench > Tools > Configuration > Restore connections
-# iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
-# iTerm2 > Install Shell Integration
+RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
+Skype-8.61.0.77.dmg # https://www.skype.com/en/thank-you-skype/
 # VScode
-npm install -g vscode
+#npm install -g vscode
 ```
 
 ### brew
 
 ```sh
-#chsh -s /bin/bash
+#chsh -s /bin/bash # only the first time
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo "eval \$(/opt/homebrew/bin/brew shellenv)" >> ~/.bash_profile
+brew --version
+brew tap aws/tap
+brew install awscli aws-sam-cli
+brew install caffeine
+brew install chromium
+brew install docker
 brew install google-chrome
+brew install --cask emacs
 brew install git bash-completion
-brew install tmux
-brew cask install meld
-brew cask install emacs
-brew install telnet
+brew install iterm2
+# iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
+# iTerm2 > Install Shell Integration
+brew install meld
 #brew install node
+#brew install nodeenv
+brew install spectacle
+brew install telnet
+brew install tmux
+brew install virtualenv
+brew install visual-studio-code
 #brew tap ringohub/redis-cli
 #brew update && brew doctor
 #brew install redis-cli
-brew install nodeenv
 ```
 
 ### env
 
 ```sh
-brew install eqnxio/cimpress-cloud-engineering/stskeygen
+#brew install eqnxio/cimpress-cloud-engineering/stskeygen
 #curl https://bootstrap.pypa.io/get-pip.py -o ~/Documents/configurations/get-pip.py
 #sudo python ~/Documents/configurations/get-pip.py
 #pip install sceptre --user # some problems without --user and with sudo
@@ -52,10 +58,10 @@ brew install eqnxio/cimpress-cloud-engineering/stskeygen
 #npm config set strict-ssl false # for serverless packages installation
 #brew install pyenv
 #pyenv install 3.6.6 # brew install python3 installs python3.7
-pip3 install virtualenv
+#pip3 install virtualenv
 # Pip, setuptools, and wheel have been installed. To update them run
 # pip3 install --upgrade pip setuptools wheel
-pip3 install awscli --upgrade
+#pip3 install awscli --upgrade
 #npm install -g aws-cdk # now only in pyenv
 ```
 
