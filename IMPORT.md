@@ -8,7 +8,6 @@
 #Caffeine1.1.1.zip # Jolt of Caffeine by Apple Store!
 chrome-mac.zip # https://chromium.woolyss.com/
 Docker.dmg # https://www.docker.com/products/docker-desktop
-googlechrome.dmg # https://www.google.com/chrome/
 iTerm2-3_2_3.zip # https://www.iterm2.com/downloads.html
 mysql-workbench-community-8.0.20-macos-x86_64.dmg # https://dev.mysql.com/downloads/workbench/
 RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
@@ -27,7 +26,8 @@ npm install -g vscode
 
 ```sh
 #chsh -s /bin/bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install google-chrome
 brew install git bash-completion
 brew install tmux
 brew cask install meld
@@ -81,6 +81,54 @@ pip3 install -r requirements.txt
 curl -fsSL https://get.docker.com | sh
 usermod -aG docker pi
 reboot
+```
+
+### brew
+
+```sh
+apt-get install build-essential procps curl file git
+exit
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+brew --version
+brew tap aws/tap
+brew install awscli aws-sam-cli
+```
+
+### env
+
+```sh
+cd github/jupyter/
+virtualenv .env
+source .env/bin/activate
+# pip3 install ipykernel
+pip3 install -r requirements.txt
+python3 -m ipykernel install --user --name jupyter --display-name "my_jupyter_kernel"
+# close and open again vscode
+```
+
+### M708
+https://help.ubuntu.com/community/TabletSetupWizardpen#Method_2
+https://bbs.archlinux.org/viewtopic.php?id=172981
+https://wiki.archlinux.org/title/wacom_tablet
+https://linux.die.net/man/4/wacom
+https://www.ugee.com/it/download/m708
+```sh
+wget https://github.com/DIGImend/digimend-kernel-drivers/releases/download/v10/digimend-dkms_10_all.deb
+dpkg -i digimend-dkms_10_all.deb
+reboot
+ls /usr/share/X11/xorg.conf.d/50-digimend.conf
+ls /dev/input/by-id/usb*
+xsetwacom list
+xsetwacom --set 9 Mode Relative
+xinput list
+xinput --list-props 9
+xinput --set-prop 9 335 1
+lsusb
+evtest
 ```
 
 ## configurations

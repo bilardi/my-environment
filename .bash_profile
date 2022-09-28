@@ -22,3 +22,5 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 
 source ~/.bashrc
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.8/bin:$PATH"
