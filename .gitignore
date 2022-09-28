@@ -53,6 +53,9 @@ Templates
 .tmux_history
 .tmux-session
 .vscode
+.zprofile
+.zsh_history
+.zsh_sessions
 .RData
 .Rhistory
 bin/tmux-resurrect

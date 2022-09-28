@@ -7,6 +7,6 @@ parse_git_branch() {
 }
 
 PS1="[\t] \w \$(parse_git_branch)$ "
-if [ -f  /etc/bash_completion ]; then
-     .  /etc/bash_completion
-fi
+# if [ -f  /etc/bash_completion ]; then
+#      .  /etc/bash_completion
+# fi

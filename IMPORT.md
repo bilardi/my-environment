@@ -6,13 +6,20 @@
 
 ```sh
 #softwareupdate --install-rosetta
-mysql-workbench-community-8.0.20-macos-x86_64.dmg # https://dev.mysql.com/downloads/workbench/
+#mysql-workbench-community-8.0.20-macos-x86_64.dmg # https://dev.mysql.com/downloads/workbench/
 # Finder > ctrl + K
 # MySQL WorkBench > Tools > Configuration > Restore connections
-RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
-Skype-8.61.0.77.dmg # https://www.skype.com/en/thank-you-skype/
+#RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
+#Skype-8.61.0.77.dmg # https://www.skype.com/en/thank-you-skype/
 # VScode
 #npm install -g vscode
+# Auto Markdown TOC, Hunter Tran
+# Awesome Emacs Keymap, Yuichiro Tsuchiya
+# AWS CLI Configure, Mark Tucker
+# aws-cloudformation-yaml, Daniel Thielking
+# Dev Containers, Docker, Jupyter, Pylance, Microsoft
+# Prettier - Code Formatter, Prettier
+# Terminal Tools, Glenn (lglong519)
 ```
 
 ### brew
@@ -26,9 +33,11 @@ brew tap aws/tap
 brew install awscli aws-sam-cli
 brew install caffeine
 brew install chromium
+brew install discord
 brew install docker
 brew install google-chrome
 brew install --cask emacs
+brew install firefox
 brew install git bash-completion
 brew install iterm2
 # iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
