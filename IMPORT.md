@@ -22,7 +22,7 @@
 # Terminal Tools, Glenn (lglong519)
 ```
 
-### brew
+### [brew](https://brew.sh/)
 
 ```sh
 #chsh -s /bin/bash # only the first time
@@ -43,6 +43,7 @@ brew install iterm2
 # iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
 # iTerm2 > Install Shell Integration
 brew install meld
+brew install --cask microsoft-teams
 #brew install node
 #brew install nodeenv
 brew install spectacle
@@ -72,6 +73,14 @@ brew install visual-studio-code
 # pip3 install --upgrade pip setuptools wheel
 #pip3 install awscli --upgrade
 #npm install -g aws-cdk # now only in pyenv
+cd ~/
+virtualenv .env
+source .env/bin/activate
+# pip3 install ipykernel
+pip3 install -r requirements.txt
+#python3 -m ipykernel install --user --name jupyter --display-name "my_jupyter_kernel"
+ipython kernel install --user --name=my_jupyter_kernel
+# close and open again vscode
 ```
 
 ## pi

@@ -1,4 +1,16 @@
-virtualenv
+#virtualenv
 #sceptre
-awscli
-aws-sam-cli
+#awscli
+#aws-sam-cli
+# https://srinivas1996kumar.medium.com/adding-custom-kernels-to-a-jupyter-notebook-in-visual-studio-53e4d595208c
+boto3
+jinja2
+sagemaker
+ipykernel
+matplotlib
+Pillow
+sklearn
+pandas
+#tensorflow2
+tzlocal
+protobuf==3.19.4
