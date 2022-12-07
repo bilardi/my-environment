@@ -34,7 +34,7 @@ brew install awscli aws-sam-cli
 brew install caffeine
 brew install chromium
 brew install discord
-brew install docker
+brew install docker docker-compose
 brew install google-chrome
 brew install --cask emacs
 brew install firefox
@@ -45,7 +45,9 @@ brew install iterm2
 brew install meld
 brew install --cask microsoft-teams
 #brew install node
-#brew install nodeenv
+brew install nodeenv
+brew install --cask obs
+brew install --cask rar
 brew install spectacle
 brew install telnet
 brew install tmux

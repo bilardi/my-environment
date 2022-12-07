@@ -1,3 +1,4 @@
+# ENV
 #virtualenv
 #sceptre
 #awscli
@@ -5,12 +6,34 @@
 # https://srinivas1996kumar.medium.com/adding-custom-kernels-to-a-jupyter-notebook-in-visual-studio-53e4d595208c
 boto3
 jinja2
-sagemaker
-ipykernel
-matplotlib
-Pillow
-sklearn
-pandas
-#tensorflow2
+
+# Analysis
+datetime
 tzlocal
+import_ipynb
+ipykernel
+ipympl
+pyarrow
+fastparquet
+Pillow
+pandas
+
+# ML
+sagemaker
 protobuf==3.19.4
+skforecast
+sklearn
+sktime
+#tensorflow
+tensorflow-macos
+xgboost
+catboost
+
+# NLP
+chardet
+cchardet
+nltk
+
+# Plot
+matplotlib
+seaborn

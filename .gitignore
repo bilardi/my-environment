@@ -38,10 +38,15 @@ Templates
 .env
 .emacs.d
 .git-credentials
+.ipython
+.jupyter
+.keras
 .less*
 .local
+.matplotlib
 .mysql_history
 .npm
+.ploomber
 .profile
 .pylint.d
 .python_history
@@ -59,5 +64,8 @@ Templates
 .RData
 .Rhistory
 bin/tmux-resurrect
+company
 github
 issues
+nltk_data
+workshop*
