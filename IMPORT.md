@@ -5,54 +5,72 @@
 ### download softwares
 
 ```sh
-#softwareupdate --install-rosetta
-#mysql-workbench-community-8.0.20-macos-x86_64.dmg # https://dev.mysql.com/downloads/workbench/
-# Finder > ctrl + K
-# MySQL WorkBench > Tools > Configuration > Restore connections
-#RStudio-1.3.959.dmg # https://rstudio.com/products/rstudio/download/#download
-#Skype-8.61.0.77.dmg # https://www.skype.com/en/thank-you-skype/
-# VScode
+#https://dev.mysql.com/downloads/workbench/
+#Finder > ctrl + K
+#MySQL WorkBench > Tools > Configuration > Restore connections
+#https://rstudio.com/products/rstudio/download/#download
+# https://www.skype.com/en/thank-you-skype/
+# https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
+sudo softwareupdate --install-rosetta
+sudo installer -pkg AWSCLIV2.pkg -target /
+# https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html
+sudo installer -pkg Downloads/aws-sam-cli-macos-arm64.pkg -target /
+# VScode - installation by brew
 #npm install -g vscode
 # Auto Markdown TOC, Hunter Tran
-# Awesome Emacs Keymap, Yuichiro Tsuchiya
+#Awesome Emacs Keymap, Yuichiro Tsuchiya
 # AWS CLI Configure, Mark Tucker
 # aws-cloudformation-yaml, Daniel Thielking
-# Dev Containers, Docker, Jupyter, Pylance, Microsoft
+# Dev Containers, Docker, Black Formatter, isort, Jupyter, Pylance, Pylint, Python, Microsoft
+# Edit csv, janisdd
+# ipython, Hoang Kim Lai
+# JSON, Beautify JSON, Meezilla
 # Prettier - Code Formatter, Prettier
-# Terminal Tools, Glenn (lglong519)
+# swagger-jsdoc Comment Formatter, Arnau Jiménez
+#Terminal Tools, Glenn (lglong519)
+# XML Formatter, Fabian Lauer
 ```
 
 ### [brew](https://brew.sh/)
 
 ```sh
-#chsh -s /bin/bash # only the first time
+# chsh -s /bin/bash # only the first time
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo "eval \$(/opt/homebrew/bin/brew shellenv)" >> ~/.bash_profile
 brew --version
-brew tap aws/tap
-brew install awscli aws-sam-cli
+#brew tap aws/tap
+#brew install awscli aws-sam-cli
+brew install --cask amazon-chime
 brew install caffeine
-brew install chromium
+#brew install chromium
+brew install --cask dbeaver-community
 brew install discord
 brew install docker docker-compose
-brew install google-chrome
 brew install --cask emacs
+brew install --cask gimp
+brew install google-chrome
 brew install firefox
 brew install git bash-completion
+brew install --cask inkscape
 brew install iterm2
-# iTerm2 > Preferences > Profiles > Color Presets > Solarized Dark
+#iTerm2 > Preferences > Profiles > Color Presets > 
+# iTerm2 > Settings > Profiles > Colors > Color Presets > Solarized Dark
 # iTerm2 > Install Shell Integration
 brew install meld
 brew install --cask microsoft-teams
 #brew install node
 brew install nodeenv
 brew install --cask obs
+brew install openfortivpn
 brew install --cask rar
+brew install sevenzip
 brew install spectacle
 brew install telnet
 brew install tmux
 brew install virtualenv
 brew install visual-studio-code
+brew install --cask zoom
 #brew tap ringohub/redis-cli
 #brew update && brew doctor
 #brew install redis-cli
