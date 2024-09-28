@@ -9,7 +9,8 @@
 #Finder > ctrl + K
 #MySQL WorkBench > Tools > Configuration > Restore connections
 #https://rstudio.com/products/rstudio/download/#download
-# https://www.skype.com/en/thank-you-skype/
+#https://www.skype.com/en/thank-you-skype/
+# https://www.synaptics.com/products/displaylink-graphics/downloads/macos
 # https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "AWSCLIV2.pkg"
 sudo softwareupdate --install-rosetta
