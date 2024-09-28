@@ -57,6 +57,7 @@ Templates
 .tmux/resurrect
 .tmux_history
 .tmux-session
+.viminfo
 .vscode
 .zprofile
 .zsh_history

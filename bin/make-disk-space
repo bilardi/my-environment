@@ -1,0 +1,19 @@
+#!/bin/bash
+
+files=".ipynb_checkpoints .DS_Store .aws-sam .pyc __pycache__"
+for file in $(echo $files); do
+   echo Removing $file files ..
+   find . -iname "$file" | while read f; do rm -rf $f; done
+done
+echo
+du -h .cache
+echo
+echo Do you want to remove all in the directory named .cache ? [Y/N]
+read answer
+if [ "$answer" == "Y" ]; then
+   echo Removing .cache directory contents .. 
+   rm -rf .cache/*
+else
+   echo Not removing data cached.
+fi
+echo Done.

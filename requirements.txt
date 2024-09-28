@@ -7,27 +7,39 @@
 boto3
 jinja2
 
+# Jupyter
+nbconvert
+
 # Analysis
 datetime
 tzlocal
 import_ipynb
 ipykernel
 ipympl
+openpyxl
 pyarrow
+pyod
 fastparquet
 Pillow
 pandas
+pyspark
+scipy
+stumpy
 
 # ML
 sagemaker
-protobuf==3.19.4
+#protobuf==3.19.4
 skforecast
-sklearn
+#sklearn
+scikit-learn
 sktime
 #tensorflow
 tensorflow-macos
 xgboost
 catboost
+
+minisom
+tslearn
 
 # NLP
 chardet

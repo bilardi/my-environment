@@ -29,3 +29,7 @@ source ~/.bashrc
 eval $(/opt/homebrew/bin/brew shellenv)
 #eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 #export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.8/bin:$PATH"
+export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

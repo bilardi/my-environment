@@ -68,3 +68,11 @@ alias myenv='PREVIOUS_PATH=$PWD; cd ~/; python3 -m venv .env && source .env/bin/
 
 # new aliases
 alias tmuxa='tmux attach -t 0'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+
+# vpn
+alias fortivpn='sudo openfortivpn -c .ssh/openfortivpn'
+
+# cleaning
+alias clean_the_disk='bash ~/bin/make-disk-space'
+# rm -rf Library/Containers/com.docker.docker
