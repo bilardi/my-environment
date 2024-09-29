@@ -209,3 +209,14 @@ find . -type f -exec chmod 0644 {} \;
 git status
 git diff | grep -B 1 "old mode" | grep "^diff" | awk '{print $3}' | sed 's#^a/#./#' | while read f; do git restore $f; done
 ```
+
+## slack.com
+
+* aws-community-italy
+* aws-usergroup-leaders
+* grusp
+* mlops-community
+* mlsecops
+* numfocus
+* pandle
+* pyladies
