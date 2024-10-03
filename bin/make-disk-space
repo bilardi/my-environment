@@ -5,10 +5,11 @@ for file in $(echo $files); do
    echo Removing $file files ..
    find . -iname "$file" | while read f; do rm -rf $f; done
 done
+
 echo
 du -h .cache
 echo
-echo Do you want to remove all in the directory named .cache ? [Y/N]
+echo Do you want to remove all in the directories named .cache ? [Y/N]
 read answer
 if [ "$answer" == "Y" ]; then
    echo Removing .cache directory contents .. 
@@ -16,4 +17,20 @@ if [ "$answer" == "Y" ]; then
 else
    echo Not removing data cached.
 fi
+
+echo
+du -h .env
+echo
+echo Do you want to remove all directories named .env ? [Y/N]
+read answer
+if [ "$answer" == "Y" ]; then
+    files=".env"
+    for file in $(echo $files); do
+        echo Removing $file files ..
+        find . -iname "$file" | while read f; do rm -rf $f; done
+    done
+else
+   echo Not removing directories named .env.
+fi
+
 echo Done.
