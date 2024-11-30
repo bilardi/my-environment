@@ -2,6 +2,7 @@
 *~
 
 .iterm*
+.pypirc
 .CFUserTextEncoding
 .DS_Store
 .Trash
