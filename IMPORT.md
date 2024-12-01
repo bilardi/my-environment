@@ -1,5 +1,60 @@
 # Import my environment
 
+## fedora
+
+### download softwares
+
+```sh
+$ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+https://extensions.gnome.org/extension/517/caffeine/
+https://www.google.com/chrome/
+https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
+https://github.com/displaylink-rpm/displaylink-rpm/releases/download/v6.1.0-1/fedora-39-displaylink-1.14.7-3.github_evdi.x86_64.rpm
+https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
+unzip aws-sam-cli-linux-x86_64.zip -d sam
+sudo ./sam/install
+https://code.visualstudio.com/docs/setup/linux
+# Auto Markdown TOC, Hunter Tran
+# AWS CLI Configure, Mark Tucker
+# aws-cloudformation-yaml, Daniel Thielking
+# Dev Containers, Docker, Black Formatter, isort, Jupyter, Pylance, Pylint, Python, Microsoft
+# Edit csv, janisdd
+# ipython, Hoang Kim Lai
+# JSON, Beautify JSON, Meezilla
+# Prettier - Code Formatter, Prettier
+# swagger-jsdoc Comment Formatter, Arnau Jiménez
+# XML Formatter, Fabian Lauer
+https://extensions.gnome.org/extension/1460/vitals/
+```
+
+### [dnf](https://packages.fedoraproject.org/)
+
+```sh
+dnf install docker
+dnf install docker-compose
+dnf install emacs
+dnf install gimp
+dnf install inkscape
+dnf install meld
+dnf install openfortivpn
+dnf install obs-studio
+dnf install python3-extractcode-7z
+dnf install python3-rarfile
+```
+
+### env
+
+```sh
+python3 -m venv .env
+source .env/bin/activate
+# pip3 install ipykernel
+pip3 install -r requirements.txt
+ipython kernel install --user --name=my_jupyter_kernel
+# close and open again vscode
+```
+
 ## mac
 
 ### download softwares
