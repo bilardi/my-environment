@@ -2,9 +2,9 @@
 #    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 #fi
 
-if [ -d /opt/homebrew/etc/bash_completion.d ]; then
-   [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
-fi
+#if [ -d /opt/homebrew/etc/bash_completion.d ]; then
+#   [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+#fi
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

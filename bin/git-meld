@@ -1,7 +1,7 @@
 #!/bin/bash
 # /usr/local/bin/meld $2 $5 # macos
-/opt/homebrew/bin/meld $2 $5
-# /usr/bin/meld $2 $5 # ubuntu
+# /opt/homebrew/bin/meld $2 $5 # macos
+/usr/bin/meld $2 $5 # ubuntu
 # meld $2 $5
 # emacs -nw --eval "(ediff-files \"$1\" \"$2\")"
 # /Applications/Meld.app/Contents/MacOS/Meld $1 $2

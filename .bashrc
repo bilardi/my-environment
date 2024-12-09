@@ -10,3 +10,6 @@ PS1="[\t] \w \$(parse_git_branch)$ "
 # if [ -f  /etc/bash_completion ]; then
 #      .  /etc/bash_completion
 # fi
+if [ -d /etc/profile.d ]; then
+    [[ -r "/etc/profile.d/bash_completion.sh" ]] && source "/etc/profile.d/bash_completion.sh"
+fi

@@ -11,7 +11,9 @@ sudo ./aws/install
 https://extensions.gnome.org/extension/517/caffeine/
 https://www.google.com/chrome/
 https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
+# DBeaver > File > Import > DBeaver > Project
 https://github.com/displaylink-rpm/displaylink-rpm/releases/download/v6.1.0-1/fedora-39-displaylink-1.14.7-3.github_evdi.x86_64.rpm
+https://docs.docker.com/desktop/setup/install/linux/fedora/
 https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
 unzip aws-sam-cli-linux-x86_64.zip -d sam
 sudo ./sam/install
@@ -26,13 +28,19 @@ https://code.visualstudio.com/docs/setup/linux
 # Prettier - Code Formatter, Prettier
 # swagger-jsdoc Comment Formatter, Arnau Jiménez
 # XML Formatter, Fabian Lauer
+# File → Preferences → Settings → User (tab)
+# "terminal.integrated.allowChords": false; Ctrl+k on bash
 https://extensions.gnome.org/extension/1460/vitals/
 ```
 
 ### [dnf](https://packages.fedoraproject.org/)
 
 ```sh
-dnf install docker
+dnf install bash-completion
+dnf install dnf-plugins-core
+dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+dnf install ./docker-desktop-x86_64.rpm
 dnf install docker-compose
 dnf install emacs
 dnf install gimp
@@ -42,6 +50,7 @@ dnf install openfortivpn
 dnf install obs-studio
 dnf install python3-extractcode-7z
 dnf install python3-rarfile
+dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
 ```
 
 ### env
