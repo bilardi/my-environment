@@ -30,9 +30,12 @@ Templates
 
 .aws
 .aws-sam
-.bash_history
+.azure
+.bash_history*
 .bash_sessions
 .cache
+.cargo
+.cdk
 .config
 .cups
 .docker
@@ -41,18 +44,23 @@ Templates
 .git-credentials
 .ipython
 .jupyter
+.kaggle
 .keras
 .less*
 .local
+.lmstudio*
+.marimo
 .matplotlib
 .mysql_history
 .npm
+.ollama
 .ploomber
 .profile
 .pylint.d
 .python_history
 .r
 .rstudio-desktop
+.rustup
 .serverless*
 .ssh
 .tmux/resurrect

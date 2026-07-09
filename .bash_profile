@@ -29,7 +29,15 @@ source ~/.bashrc
 eval $(/opt/homebrew/bin/brew shellenv)
 #eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 #export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.8/bin:$PATH"
-export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+#export PATH="/opt/homebrew/opt/sphinx-doc/bin:$PATH"
+#export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+#export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+#export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
+. "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/bilardi/.lmstudio/bin"
+# End of LM Studio CLI section
+

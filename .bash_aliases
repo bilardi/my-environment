@@ -72,7 +72,16 @@ alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # vpn
 alias fortivpn='sudo openfortivpn -c .ssh/openfortivpn'
+alias forticlean='sudo systemctl restart systemd-resolved'
+alias gatevpn='gpclient launch-gui'
 
 # cleaning
 alias clean_the_disk='bash ~/bin/make-disk-space'
 # rm -rf Library/Containers/com.docker.docker
+
+# aws
+alias aws-sso-login='bash ~/bin/aws-sso-login'
+
+# docker
+alias docker='sudo docker'
+alias psql='sudo docker run -it --rm alpine/psql'

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+profile=$1
+
+if [ -z "$profile" ]; then
+    echo "Usage: aws-sso-login <profile>"
+    exit 1
+fi
+
+aws sso login --profile $profile
+eval $(aws configure export-credentials --profile $profile --format env)
+aws configure set aws_access_key_id "$AWS_ACCESS_KEY_ID" --profile $profile
+aws configure set aws_secret_access_key "$AWS_SECRET_ACCESS_KEY" --profile $profile
+aws configure set aws_session_token "$AWS_SESSION_TOKEN" --profile $profile

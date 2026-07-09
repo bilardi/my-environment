@@ -13,3 +13,18 @@ PS1="[\t] \w \$(parse_git_branch)$ "
 if [ -d /etc/profile.d ]; then
     [[ -r "/etc/profile.d/bash_completion.sh" ]] && source "/etc/profile.d/bash_completion.sh"
 fi
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+. "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"
+eval "$(uvx --generate-shell-completion bash)"
+eval "$(uv generate-shell-completion bash)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/bilardi/.lmstudio/bin"
+# End of LM Studio CLI section
+

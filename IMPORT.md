@@ -11,13 +11,24 @@ sudo ./aws/install
 https://extensions.gnome.org/extension/517/caffeine/
 https://www.google.com/chrome/
 https://dbeaver.io/files/dbeaver-ce-latest-stable.x86_64.rpm
+rpm -i dbeaver-ce-latest-stable.x86_64.rpm
 # DBeaver > File > Import > DBeaver > Project
 https://github.com/displaylink-rpm/displaylink-rpm/releases/download/v6.1.0-1/fedora-39-displaylink-1.14.7-3.github_evdi.x86_64.rpm
+dnf remove displaylink
+rpm -i fedora-39-displaylink-1.14.7-3.github_evdi.x86_64.rpm
 https://docs.docker.com/desktop/setup/install/linux/fedora/
 https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip
 unzip aws-sam-cli-linux-x86_64.zip -d sam
 sudo ./sam/install
 https://code.visualstudio.com/docs/setup/linux
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
+dnf check-update
+dnf install code
+flatpak install org.freecad.FreeCAD
+flatpak install flathub io.github.seadve.Kooha
+flatpak install flathub com.visualstudio.code
+flatpak run com.visualstudio.code
 # Auto Markdown TOC, Hunter Tran
 # AWS CLI Configure, Mark Tucker
 # aws-cloudformation-yaml, Daniel Thielking
@@ -31,26 +42,64 @@ https://code.visualstudio.com/docs/setup/linux
 # File → Preferences → Settings → User (tab)
 # "terminal.integrated.allowChords": false; Ctrl+k on bash
 https://extensions.gnome.org/extension/1460/vitals/
+# azure-devop
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo sh -c 'echo -e "[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
 ```
 
 ### [dnf](https://packages.fedoraproject.org/)
 
 ```sh
+dnf install azure-cli
 dnf install bash-completion
 dnf install dnf-plugins-core
 dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 dnf install ./docker-desktop-x86_64.rpm
 dnf install docker-compose
+sudo ln -s "$HOME/.docker/desktop/docker.sock" /var/run/docker.sock
 dnf install emacs
+dnf install ./forticlient_vpn_7.4.3.1736_x86_64.rpm
+dnf install gh
 dnf install gimp
+dnf install git-subtree
+dnf copr enable yuezk/globalprotect-openconnect
+dnf install globalprotect-openconnect
 dnf install inkscape
+dnf install nodejs
 dnf install meld
 dnf install openfortivpn
 dnf install obs-studio
+dnf install perf
 dnf install python3-extractcode-7z
 dnf install python3-rarfile
+dnf install qrencode
 dnf install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
+dnf install yt-dlp
+```
+
+### pip
+
+```sh
+poetry
+poetry self add poetry-plugin-shell
+
+poetry install
+poetry run python nome-script
+poetry env list
+poetry shell # serve per entrare nell'env
+deactivate poi solito
+```
+
+### npm
+
+```sh
+npm install -g aws-cdk
 ```
 
 ### env
@@ -62,6 +111,22 @@ source .env/bin/activate
 pip3 install -r requirements.txt
 ipython kernel install --user --name=my_jupyter_kernel
 # close and open again vscode
+```
+
+### azure
+
+```sh
+az extension add --name azure-devops
+az extension list
+az login
+az devops configure --defaults organization=https://dev.azure.com/<org> project=<project>
+```
+
+### gnome
+
+```sh
+gnome-extensions enable tiling-assistant@leleat-on-github
+gnome-extensions prefs tiling-assistant@leleat-on-github
 ```
 
 ## mac
