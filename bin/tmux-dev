@@ -1,0 +1,40 @@
+#!/bin/bash
+# Creates the tmux session for a coding agent in the current directory: bash on
+# the left, agent on the right, editor on demand with prefix + e or prefix + v.
+# This is the everyday one. The agent runs with your own configuration and your
+# own credentials, wherever you happen to be, and nothing is handed to it.
+
+set -euo pipefail
+
+AGENT="${1:-}"
+
+# The suffix keeps one session per agent on the same directory, so more than
+# one can stay open at once and they are told apart at a glance in tmux ls.
+case "$AGENT" in
+  opencode) SUFFIX="oc"; LAUNCH="opencode" ;;
+  claude) SUFFIX="cc"; LAUNCH="claude" ;;
+  pi) SUFFIX="pi"; LAUNCH="pi" ;;
+  openhands) SUFFIX="oh"; LAUNCH="openhands" ;;
+  # The only one whose command is not its own name
+  kiro) SUFFIX="ki"; LAUNCH="kiro-cli chat" ;;
+  *)
+    echo "usage: $0 <opencode|claude|pi|openhands|kiro>" >&2
+    exit 1
+    ;;
+esac
+
+WORK_DIR="$PWD"
+SESSION="$(basename "$WORK_DIR")-$SUFFIX"
+
+if tmux has-session -t "=$SESSION" 2> /dev/null; then
+  exec tmux attach-session -t "=$SESSION"
+fi
+
+# A pane inherits the environment of the tmux server, which was set when the
+# server first started and can be days old, not the environment of whoever
+# runs this. So the agent is started through a login shell: it reads the
+# profile, and finds the same PATH and the same variables you would.
+tmux new-session -d -s "$SESSION" -c "$WORK_DIR"
+tmux split-window -h -t "$SESSION" -c "$WORK_DIR" "bash -lc '$LAUNCH'"
+tmux select-pane -t "$SESSION".0
+exec tmux attach-session -t "=$SESSION"

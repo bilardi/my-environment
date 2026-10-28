@@ -85,3 +85,17 @@ alias aws-sso-login='bash ~/bin/aws-sso-login'
 # docker
 alias docker='sudo docker'
 alias psql='sudo docker run -it --rm alpine/psql'
+
+# ai assistant
+alias tmuxoc='bash ~/bin/tmux-dev opencode'
+alias tmuxcc='bash ~/bin/tmux-dev claude'
+alias tmuxpi='bash ~/bin/tmux-dev pi'
+alias tmuxoh='bash ~/bin/tmux-dev openhands'
+alias tmuxki='bash ~/bin/tmux-dev kiro'
+
+# remote: the Firefox of the xpra session on display :100, see REMOTE.md
+alias fx='xpra control :100 start firefox'
+alias fxb='xpra control :100 start firefox "$(tmux save-buffer -)"'
+alias fxstart='xpra start :100 --start=firefox'
+alias fxattach='xpra attach :100'
+alias fxdetach='xpra detach :100'
