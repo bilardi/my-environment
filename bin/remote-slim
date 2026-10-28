@@ -1,0 +1,46 @@
+#!/bin/bash
+# Slims down the Fedora minimal of the mini PC, one step at a time, before its
+# first dnf upgrade: what is not installed is not upgraded either. The lists fit
+# an old netbook with Intel graphics and Atheros wifi and ethernet, none of which
+# needs a separate firmware. dnf asks before removing anything: read its list,
+# and answer N when kernel, linux-firmware, NetworkManager, dnf5, sudo, systemd
+# or selinux-policy are in it. See REMOTE.md.
+
+set -euo pipefail
+
+STEP="${1:-}"
+
+case "$STEP" in
+  # Upgrades and later installs would bring back what is only recommended
+  weak-deps)
+    if ! grep -q '^install_weak_deps=' /etc/dnf/dnf.conf; then
+      echo 'install_weak_deps=False' | sudo tee -a /etc/dnf/dnf.conf
+    fi
+    ;;
+  # The firmware of hardware the mini PC does not have; atheros-firmware stays
+  # for a Bluetooth card, if there is one
+  firmware)
+    sudo dnf remove nvidia-gpu-firmware amd-gpu-firmware amd-ucode-firmware intel-gpu-firmware \
+      brcmfmac-firmware mt7xxx-firmware nxpwireless-firmware qcom-wwan-firmware realtek-firmware \
+      tiwilink-firmware cirrus-audio-firmware intel-audio-firmware
+    ;;
+  # Services and tools a station that only connects out does not need:
+  # crash reports, support reports, firmware updates, modems, the boot splash,
+  # the ssh server, a second logger, enterprise and network shares
+  services)
+    sudo dnf remove abrt-cli sos fwupd NetworkManager-wwan NetworkManager-bluetooth plymouth \
+      openssh-server mcelog psacct at quota mdadm realmd cifs-utils nfs-utils opensc fprintd-pam \
+      dnsmasq rsyslog deltarpm
+    # Without plymouth the boot shows its messages, and the initramfs gets smaller
+    sudo grubby --update-kernel=ALL --remove-args="rhgb quiet"
+    sudo dracut -f --regenerate-all
+    ;;
+  # Small, they can stay as well
+  extras)
+    sudo dnf remove hunspell words ntfs-3g ntfsprogs iptstate pinfo fpaste
+    ;;
+  *)
+    echo "usage: $0 <weak-deps|firmware|services|extras>" >&2
+    exit 1
+    ;;
+esac

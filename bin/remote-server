@@ -1,0 +1,22 @@
+#!/bin/bash
+# Prepares the home Fedora to be worked on from the mini PC: sshd for the shell,
+# xpra for the browser, no sleep so it stays reachable, tailscale so it is
+# reachable from any network. See REMOTE.md.
+
+set -euo pipefail
+
+sudo dnf install xpra
+sudo systemctl enable --now sshd
+
+# The GNOME power settings in IMPORT.md do not cover the login screen, which
+# suspends on its own: masking the targets is the setting that always holds.
+sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
+
+# Tailscale is not in the Fedora repositories
+if ! command -v tailscale >/dev/null; then
+  sudo curl -fsSL -o /etc/yum.repos.d/tailscale.repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+  sudo dnf install tailscale
+fi
+sudo systemctl enable --now tailscaled
+# Prints a link to log in: the same account goes on the mini PC
+sudo tailscale up

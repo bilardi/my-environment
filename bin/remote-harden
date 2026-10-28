@@ -1,0 +1,19 @@
+#!/bin/bash
+# Turns off password logins on the home Fedora, leaving keys only. Run it only
+# after ssh fedora from the mini PC has logged in without a password, and keep
+# that session open until a new one has logged in again. See REMOTE.md.
+
+set -euo pipefail
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Without a key in place this would lock out every remote login
+if [ ! -s ~/.ssh/authorized_keys ]; then
+  echo "no key in ~/.ssh/authorized_keys: run bin/remote-client on the mini PC first" >&2
+  exit 1
+fi
+
+sudo install -m 600 "$DIR/etc/ssh/sshd_config.d/01-no-password.conf" /etc/ssh/sshd_config.d/
+# A broken configuration would stop sshd from starting again
+sudo sshd -t
+sudo systemctl reload sshd

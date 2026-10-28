@@ -1,0 +1,8 @@
+# The mini PC side of the aliases in REMOTE.md: the Firefox of the xpra session
+# on the home Fedora, through ssh. bin/remote-client links it into the mini PC,
+# whose default ~/.bashrc sources ~/.bashrc.d/; the home ~/.bashrc does not, so
+# here it stays inert.
+
+alias fx='ssh fedora xpra control :100 start firefox'
+alias fxstart='ssh fedora xpra start :100 --start=firefox'
+alias fxdetach='ssh fedora xpra detach :100'

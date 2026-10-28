@@ -1,0 +1,65 @@
+#!/bin/bash
+# Prepares the mini PC as a station for the home Fedora: the shell is the text
+# console over ssh, and a bare X with matchbox only shows the Firefox that xpra
+# brings from home, full screen. Tailscale reaches home from any network.
+# Run it after bin/remote-server on the home Fedora. See REMOTE.md.
+
+set -euo pipefail
+
+HOST="fedora"
+REMOTE_USER="bilardi"
+DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Tailscale names are unique: a second fedora would become fedora-1
+if [ "$(hostnamectl hostname)" = "$HOST" ]; then
+  echo "this machine is called $HOST too: sudo hostnamectl set-hostname <name> first" >&2
+  exit 1
+fi
+
+# The xpra package does not declare what its GTK client imports: the last three
+sudo dnf install xorg-x11-server-Xorg xorg-x11-xinit matchbox-window-manager git xpra \
+  NetworkManager-wifi NetworkManager-tui gobject-introspection python3-gobject python3-cairo
+
+read -rp "Configure the wifi now with nmtui? [y/N] " ANSWER
+if [ "$ANSWER" = "y" ]; then
+  sudo nmtui
+fi
+
+# Tailscale is not in the Fedora repositories
+if ! command -v tailscale >/dev/null; then
+  sudo curl -fsSL -o /etc/yum.repos.d/tailscale.repo https://pkgs.tailscale.com/stable/fedora/tailscale.repo
+  sudo dnf install tailscale
+fi
+sudo systemctl enable --now tailscaled
+# Prints the link to log in as a QR code too, for the phone, as there is no
+# browser here: the same account as on the home Fedora
+sudo tailscale up --qr
+
+# A key of its own, so it can be revoked without touching the other machines
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+  ssh-keygen -t ed25519
+fi
+# Asks for the password once: the last time before bin/remote-harden
+ssh-copy-id "$REMOTE_USER@$HOST"
+
+# Written only when missing, never overwritten
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
+if ! grep -q "^Host $HOST\$" ~/.ssh/config 2>/dev/null; then
+  printf 'Host %s\n    HostName %s\n    User %s\n' "$HOST" "$HOST" "$REMOTE_USER" >> ~/.ssh/config
+  chmod 600 ~/.ssh/config
+fi
+# xpra is the last command: detaching from it closes X and goes back to the console.
+# The old Intel graphics cannot run the shaders of the xpra OpenGL renderer.
+if [ ! -f ~/.xinitrc ]; then
+  printf 'matchbox-window-manager &\nexec xpra attach ssh://%s/ --opengl=no\n' "$HOST" > ~/.xinitrc
+fi
+
+# A link, not a copy, so a git pull updates the aliases too
+ALIASES="$(cd "$DIR/.." && pwd)/.bashrc.d/remote"
+if [ ! -f "$ALIASES" ]; then
+  echo "no $ALIASES: run this script from the cloned repository to get the aliases" >&2
+elif [ ! -e ~/.bashrc.d/remote ]; then
+  mkdir -p ~/.bashrc.d
+  ln -s "$ALIASES" ~/.bashrc.d/remote
+fi
