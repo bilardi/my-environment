@@ -3,6 +3,6 @@
 # whose default ~/.bashrc sources ~/.bashrc.d/; the home ~/.bashrc does not, so
 # here it stays inert.
 
-alias fx='ssh fedora xpra control :100 start firefox'
 alias fxstart='ssh fedora xpra start :100 --start=firefox'
 alias fxdetach='ssh fedora xpra detach :100'
+alias fxstop='ssh fedora xpra stop :100'

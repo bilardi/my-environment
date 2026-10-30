@@ -25,8 +25,9 @@ xpra brings a single window, Firefox, onto the mini PC. The session lives on the
 home Fedora and survives disconnections: detach, attach again from anywhere, the
 tabs are still there. It runs over ssh, so it needs nothing else open.
 
-A Firefox profile can be open in one instance only, so Firefox always runs
-inside the xpra session, at home too, as in [Every day](#every-day).
+A Firefox profile can be open in one instance only, so Firefox runs either
+inside the xpra session or on the home desktop, never in both: the switch is in
+[Every day](#every-day).
 
 ## Why matchbox
 
@@ -168,9 +169,6 @@ the reboot, since the installer itself runs from it.
 
 ## Setting it up, in this order
 
-Until they are pushed, the scripts come from the home Fedora, on the home
-network, with `scp bilardi@<home ip>:bin/<script> ~/`.
-
 1. On the home Fedora:
    ```sh
    bash bin/remote-server
@@ -224,29 +222,82 @@ network, with `scp bilardi@<home ip>:bin/<script> ~/`.
 - the console is the shell: `ssh fedora`, then the tmux sessions in
   [TMUX.md](TMUX.md), which stay alive when the connection drops. Emacs and tmux
   get every key combination a terminal can send
+- the coding agents run on the home Fedora, each in its own tmux session: from
+  the mini PC `tmux ls` lists them and `tmux attach -t <session>` joins one, as
+  in [Commands](#commands)
 - `startx` shows Firefox. Ctrl+Alt+F3 goes back to a console while it runs, and
   the console where X runs, F1 or F2, goes back to Firefox. Detaching from xpra,
   as in step 6, closes X
-- at home, `fxattach` shows the same Firefox on the home desktop. It is
-  never closed, only detached from one side and attached on the other
+- leaving home, Firefox moves into the xpra session: Ctrl+Q closes it on the
+  home desktop, then `fxstart`, from either machine, starts it inside the
+  session. Back home, `fxstop` closes the session and `firefox` reopens
+  the same tabs on the desktop
+- when Firefox was left open on the home desktop, `fxstart` cannot open the
+  profile, which is in use: `ssh fedora pkill firefox` closes it from the mini
+  PC, and the session reopens its tabs
 - with a passphrase on the key, xpra asks for it as well: `eval "$(ssh-agent)"`
   and `ssh-add` before `startx` ask for it once
 - away from home the image depends on the upload speed of the home connection:
-  when scrolling stutters, `--encoding=jpeg --quality=60` after `xpra attach` in
-  `~/.xinitrc` makes it lighter
-- the console has no copy and paste, so a link that `claude` or `gh` prints to
-  log in is opened from tmux: select it in copy mode, then `fxb` in a pane on
-  the home Fedora opens it in the Firefox that xpra shows
+  when scrolling stutters, `--encoding=jpeg --quality=40 --refresh-rate=10`
+  after `xpra attach` in `~/.xinitrc` makes it lighter, enough on a phone hotspot
 - `Failed to link: error: Exceeded max TGSI temps` at every `startx` comes from
   X, which accelerates with OpenGL on the old Intel graphics: it is harmless.
   Should drawing glitches show up, `Option "AccelMethod" "none"` in a `Device`
   section under `/etc/X11/xorg.conf.d/` turns that off
 
+## Commands
+
+What is typed on the mini PC, at hand when this page is not.
+
+The checks, when something does not answer:
+
+```sh
+nmcli d                        # CONNECTION is the current network
+tailscale ping fedora          # pong: home is reachable
+tailscale status               # "relay" when the direct path is blocked, slower
+ssh fedora xpra list           # LIVE session at :100: Firefox is there
+journalctl -b -p err           # errors since boot
+```
+
+The network, only from the local console, never inside `ssh fedora`, and with
+`sudo` for the changes, as polkit is gone:
+
+```sh
+nmcli device wifi list         # networks around
+sudo nmcli device wifi connect "<network>" password "<password>"
+nmcli connection show          # saved networks
+sudo nmcli connection up "<network>"
+```
+
+The tmux sessions on the home Fedora:
+
+```sh
+ssh fedora
+tmux ls
+tmux attach -t <session>
+tmux attach -d -t <session>    # and detaches the other screens
+tmux kill-session -t <session>
+```
+
+| keys | action |
+|---|---|
+| Ctrl+B % | new pane on the right |
+| Ctrl+B " | new pane below |
+| Ctrl+B arrows | move between panes |
+| Ctrl+B [ | scroll with PgUp, PgDn and the arrows, `q` to exit |
+| Ctrl+B d | detach, the session stays alive |
+
+The rest:
+
+- Ctrl+Alt+F3 or F4 opens another console, F1 or F2 goes back to X
+- `scp fedora:/tmp/<file> ~/` brings a file from home, `scp ~/<file> fedora:/tmp/`
+  takes it there
+- `sudo reboot`, and `sudo poweroff` after `fxdetach`
+
 ## Aliases
 
-The Firefox of the xpra session on display `:100` has the same aliases on both
-machines: on the home Fedora they talk to the session directly, on the mini PC
-they go through ssh. The ones of the home Fedora are in
+The xpra session on display `:100` has short aliases: on the home Fedora they
+talk to the session directly, on the mini PC they go through ssh. The ones of the home Fedora are in
 [.bash_aliases](.bash_aliases), the ones of the mini PC in
 [.bashrc.d/remote](.bashrc.d/remote), which `bin/remote-client` links into the
 `~/.bashrc.d/` of the mini PC: its default `~/.bashrc` sources that directory,
@@ -254,15 +305,9 @@ the home one does not.
 
 | alias | home Fedora | mini PC |
 |---|---|---|
-| `fx <url>` | opens the url in that Firefox | the same, typed on the mini PC console |
-| `fxb` | opens the link copied in tmux | |
-| `fxstart` | starts the session with Firefox, after a reboot | the same, over ssh |
-| `fxattach` | shows that Firefox on the home desktop | `startx` does it |
-| `fxdetach` | detaches whoever is looking at it | the same, over ssh |
-
-`xpra control :100 start` runs the command inside the session, so Firefox
-finds the instance already open and adds a tab instead of complaining that the
-profile is in use.
+| `fxstart` | starts the session with Firefox, after Ctrl+Q on the desktop | the same, over ssh |
+| `fxdetach` | | closes X, Firefox stays alive at home |
+| `fxstop` | closes the session and its Firefox, before `firefox` on the desktop | the same, over ssh, on the way home |
 
 ## Keeping both on the same release
 

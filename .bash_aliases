@@ -94,8 +94,5 @@ alias tmuxoh='bash ~/bin/tmux-dev openhands'
 alias tmuxki='bash ~/bin/tmux-dev kiro'
 
 # remote: the Firefox of the xpra session on display :100, see REMOTE.md
-alias fx='xpra control :100 start firefox'
-alias fxb='xpra control :100 start firefox "$(tmux save-buffer -)"'
 alias fxstart='xpra start :100 --start=firefox'
-alias fxattach='xpra attach :100'
-alias fxdetach='xpra detach :100'
+alias fxstop='xpra stop :100'
